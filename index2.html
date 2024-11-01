@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Kamu</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #ffebf0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        color: #d6249f;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3em;
+        margin: 0;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      p {
+        font-size: 1.5em;
+        margin: 20px 0;
+        animation: fadeIn 3s ease-in-out;
+      }
+
+      .heart {
+        font-size: 4em;
+        color: #ff007f;
+        animation: beat 0.8s infinite alternate;
+      }
+
+      @keyframes beat {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.2);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #ff007f;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+        border-radius: 5px;
+        animation: fadeIn 4s ease-in-out;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #d6249f;
+      }
+
+      /* Gaya untuk hati yang muncul */
+      .floating-heart {
+        position: absolute;
+        font-size: 2em;
+        color: #ff007f;
+        opacity: 0;
+        animation: floatUp 2s ease-out forwards;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Untuk Kamu, Cintaku 💖</h1>
+      <p>Kamu adalah alasan senyumku setiap hari.</p>
+      <p>Aku bersyukur punya kamu dalam hidupku 💕</p>
+      <div class="heart">❤️</div>
+      <div class="button" onclick="showHearts()">I Love You</div>
+    </div>
+
+    <script>
+      // Fungsi untuk menampilkan banyak hati saat tombol diklik
+      function showHearts() {
+        for (let i = 0; i < 20; i++) {
+          // Jumlah hati yang muncul
+          const heart = document.createElement("div");
+          heart.classList.add("floating-heart");
+          heart.textContent = "❤️";
+          document.body.appendChild(heart);
+
+          // Menentukan posisi acak untuk setiap hati
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.top = Math.random() * 100 + "vh";
+
+          // Menghapus elemen hati setelah animasi selesai
+          heart.addEventListener("animationend", () => {
+            heart.remove();
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
